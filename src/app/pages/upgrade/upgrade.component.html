@@ -1,72 +1,46 @@
 <div class="row">
-  <div class="col-md-8 ml-auto mr-auto">
-    <div class="card card-upgrade">
-      <div class="card-header text-center">
-        <h4 class="card-title">Paper Dashboard PRO Angular</h4>
-          <p class="card-category">Are you looking for more components? Please check our Premium Version of Paper Dashboard PRO.</p>
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title"> Deposit list </h4>
       </div>
       <div class="card-body">
-        <div class="table-responsive table-upgrade">
+        <div *ngIf="isLoading" class="text-center">
+          <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden"></span>
+          </div>
+        </div>
+        <div class="table-responsive">
           <table class="table">
-            <thead>
-              <th></th>
-              <th class="text-center">Free</th>
-              <th class="text-center">PRO</th>
+            <thead class=" text-primary">
+              <th>#</th>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Montant</th>
+              <th>Date</th>
+              <!-- <th>Statut</th> -->
+              <!-- <th>Action</th> -->
             </thead>
             <tbody>
-              <tr>
-                <td>Components</td>
-                <td class="text-center">16</td>
-                <td class="text-center">160</td>
-              </tr>
-              <tr>
-                <td>Plugins</td>
-                <td class="text-center">4</td>
-                <td class="text-center">15</td>
-              </tr>
-              <tr>
-                <td>Example Pages</td>
-                <td class="text-center">7</td>
-                <td class="text-center">27</td>
-              </tr>
-              <tr>
-                <td>Login, Register, Pricing, Lock Pages</td>
-                <td class="text-center"><i class="nc-icon nc-simple-remove text-danger"></i></td>
-                <td class="text-center"><i class="nc-icon nc-check-2 text-success"></i></td>
-              </tr>
-              <tr>
-                <td>DataTables, VectorMap, SweetAlert, Wizard, FullCalendar etc...</td>
-                <td class="text-center"><i class="nc-icon nc-simple-remove text-danger"></i></td>
-                <td class="text-center"><i class="nc-icon nc-check-2 text-success"></i></td>
-              </tr>
-              <tr>
-                <td>Mini Sidebar</td>
-                <td class="text-center"><i class="nc-icon nc-simple-remove text-danger"></i></td>
-                <td class="text-center"><i class="nc-icon nc-check-2 text-success"></i></td>
-              </tr>
-              <tr>
-                <td>Premium Support</td>
-                <td class="text-center"><i class="nc-icon nc-simple-remove text-danger"></i></td>
-                <td class="text-center"><i class="nc-icon nc-check-2 text-success"></i></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td class="text-center">Free</td>
-                <td class="text-center">Just $49</td>
-              </tr>
-              <tr>
-                <td class="text-center"></td>
-                <td class="text-center">
-                  <a href="#" class="btn btn-round btn-default disabled">Current Version</a>
-                </td>
-                <td class="text-center">
-                  <a target="_blank" href="https://www.creative-tim.com/product/paper-dashboard-pro-angular?ref=pd-free-angular-upgrade-live" class="btn btn-round btn-primary">Upgrade to PRO</a>
+              <tr *ngFor = "let item of listeItems ; let i = index">
+                <th scope="row">{{i+1}} </th>
+                <td>{{item.auteur.username}} </td>
+                <td>{{item.auteur.email}} </td>
+                <td>{{item.montant}} </td>
+                <td>{{item.date}} </td>
+                <!-- <td>{{item.statut}} </td> -->
+                <td>
+                  <!-- <button (click)="confirmAction('valider', item)" class="btn btn-success" title="Valider"><i class="fa fa-check"></i></button>
+                  <button (click)="confirmAction('annuler', item)" class="btn btn-danger" title="Annuler"><i class="fa fa-times"></i></button> -->
                 </td>
               </tr>
             </tbody>
+            
           </table>
         </div>
       </div>
     </div>
   </div>
+ 
+
 </div>
