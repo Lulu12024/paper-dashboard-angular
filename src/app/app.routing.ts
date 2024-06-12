@@ -1,13 +1,20 @@
 import { Routes } from '@angular/router';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { LoginComponent } from './pages/login/login.component';
 
 export const AppRoutes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
-    pathMatch: 'full',
-  }, {
+    redirectTo: 'auth/login',
+    pathMatch: 'full'
+  },
+  // {
+  //   path: '',
+  //   redirectTo: 'dashboard',
+  //   pathMatch: 'full',
+  // }, 
+  {
     path: '',
     component: AdminLayoutComponent,
     children: [
@@ -17,6 +24,14 @@ export const AppRoutes: Routes = [
   }]},
   {
     path: '**',
-    redirectTo: 'dashboard'
-  }
+    redirectTo: 'auth/login'
+  },
+  {
+    path: 'auth',
+    component: LoginComponent,
+    children: [
+        {
+      path: '',
+      loadChildren: () => import('./pages/login/login.module').then(x => x.LoginRoutesModule)
+  }]},
 ]

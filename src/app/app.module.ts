@@ -2,7 +2,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ToastrModule } from "ngx-toastr";
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { SidebarModule } from './sidebar/sidebar.module';
 import { FooterModule } from './shared/footer/footer.module';
 import { NavbarModule} from './shared/navbar/navbar.module';
@@ -13,12 +13,15 @@ import { AppRoutes } from './app.routing';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { HttpModule } from "./shared/services/http.module";
+// import { LoginComponent } from "./pages/login/login.component"
 
 @NgModule({
   declarations: [
     AppComponent,
-    AdminLayoutComponent
+    AdminLayoutComponent,
+    
   ],
+
   imports: [
     BrowserAnimationsModule,
     RouterModule.forRoot(AppRoutes,{
@@ -30,7 +33,8 @@ import { HttpModule } from "./shared/services/http.module";
     FooterModule,
     FixedPluginModule,
     HttpClientModule,
-    HttpModule
+    HttpModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
