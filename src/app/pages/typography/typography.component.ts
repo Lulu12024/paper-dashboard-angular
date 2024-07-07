@@ -57,11 +57,17 @@ export class TypographyComponent{
       let param = {
         "withdraw_id" : item.id
       }
-      this.service.confirmWithdraw(param).subscribe((data) => {
+      this.service.confirmWithdraw(param).subscribe(
+      (data) => {
         console.log(data);
         this.isLoading = false;
         this.toastr.success('La demande a été validée avec succès.', 'Succès');
-      });
+      },
+      (error) => {
+        this.isLoading = false;
+        console.log(error)
+        this.toastr.error(error.error.message, 'Erreur');
+      },);
       
     }
   
@@ -72,7 +78,8 @@ export class TypographyComponent{
       let param = {
         "withdraw_id" : item.id
       }
-      this.service.cancelWithdraw(param).subscribe((data) => {
+      this.service.cancelWithdraw(param).subscribe(
+        (data) => {
         console.log(data);
         this.isLoading = false;
         this.toastr.success('La demande a été validée avec succès.', 'Succès');
